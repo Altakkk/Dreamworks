@@ -10,6 +10,6 @@ class Teacher extends Model
     use HasFactory;
     protected $guarded=[];
     public function courses(){
-        return $this->hasMany(Course::class, 'teacherID');
+        return $this->hasMany(Course::class, 'teacher_id');
     }
 }

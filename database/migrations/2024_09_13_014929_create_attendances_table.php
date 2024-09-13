@@ -13,15 +13,14 @@ return new class extends Migration
     {
         Schema::create('attendances', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('courseID')->index();
-            $table->unsignedBigInteger('studentID')->index();
-            $table->unsignedBigInteger('statusID')->index();
-            $table->string('aDate');
+            $table->unsignedBigInteger('course_id')->index();
+            $table->unsignedBigInteger('student_id')->index();
+            $table->unsignedBigInteger('stat_id')->index();
+            $table->date('adate');
 
-
-            $table->foreign('courseID')->references('id')->on('courses')->cascadeOnDelete();
-            $table->foreign('studentID')->references('id')->on('student')->cascadeOnDelete();
-            $table->foreign('statusID')->references('id')->on('status')->cascadeOnDelete();
+            $table->foreign('course_id')->references('id')->on('courses')->cascadeOnDelete();
+            $table->foreign('student_id')->references('id')->on('students')->cascadeOnDelete();
+            $table->foreign('stat_id')->references('id')->on('stats')->cascadeOnDelete();
         });
     }
 

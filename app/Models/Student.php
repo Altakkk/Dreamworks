@@ -10,9 +10,9 @@ class Student extends Model
     use HasFactory;
     protected $guarded = [];
     public function course(){
-        return $this->belongsTo(Teacher::class,'courseID');
+        return $this->belongsTo(Course::class,'course_id');
     }
     public function attendances(){
-        return $this->hasMany(Attendance::class,'studentID');
+        return $this->hasMany(Attendance::class,'student_id');
     }
 }

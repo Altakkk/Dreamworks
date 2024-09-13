@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('stats', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('abrogation');
+            $table->string('abr');
         });
     }
 

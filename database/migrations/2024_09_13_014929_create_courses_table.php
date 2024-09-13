@@ -13,13 +13,13 @@ return new class extends Migration
     {
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('teacherID')->index();
+            $table->unsignedBigInteger('teacher_id')->index();
             $table->integer('grade');
             $table->string('group');
             $table->string('YearLesson');
             $table->boolean('isActive');
 
-            $table->foreign('teacherID')->references('id')->on('teachers')->cascadeOnDelete();
+            $table->foreign('teacher_id')->references('id')->on('teachers')->cascadeOnDelete();
         });
     }
 

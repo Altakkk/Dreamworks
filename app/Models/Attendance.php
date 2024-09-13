@@ -10,12 +10,12 @@ class Attendance extends Model
     use HasFactory;
     protected $guarded = [];
     public function course(){
-        return $this->belongsTo(Course::class, 'courseID');
+        return $this->belongsTo(Course::class, 'course_id');
     }
     public function student(){
-        return $this->belongsTo(Student::class, 'student_ID');
+        return $this->belongsTo(Student::class, 'student_id');
     }
     public function stat(){
-        return $this->belongsTo(Stat::class, 'statID');
+        return $this->belongsTo(Stat::class, 'stat_id');
     }
 }

@@ -10,6 +10,6 @@ class Stat extends Model
     use HasFactory;
     protected $guarded = [];
     public function course(){
-        return $this->belongsTo(Teacher::class,'courseID');
+        return $this->belongsTo(Attendance::class,'stat_id');
     }
 }

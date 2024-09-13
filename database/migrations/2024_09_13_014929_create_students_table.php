@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('students', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('classID')->index();
+            $table->unsignedBigInteger('course_id')->index();
             $table->string('firstName');
             $table->string('lastName');
             $table->string('gender');
@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('RD');
             $table->boolean('isActive');
 
-            $table->foreign('classID')->references('id')->on('courses')->cascadeOnDelete();
+            $table->foreign('course_id')->references('id')->on('courses')->cascadeOnDelete();
         });
     }
 
