@@ -2,20 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 
+use Illuminate\Http\Request;
+use App\Models\Course;
+use App\Http\Resources\CourseResource;
 class CourseController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
-    {
-        //
+    {        
+        $x=CourseResource::collection(Course::all());
+        return response()->json([
+            'data'=>$x,
+        ],200) ;
     }
 
-    /**
-     * Show the form for creating a new resource.
+    /**     * Show the form for creating a new resource.
      */
     public function create()
     {

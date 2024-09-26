@@ -9,6 +9,7 @@ class Student extends Model
 {
     use HasFactory;
     protected $guarded=[];
+    public $timestamps = false;
 
     public function course(){
         return $this->belongsTo(Course::class,'course_id');
@@ -17,4 +18,5 @@ class Student extends Model
     public function attendances(){
         return $this->hasMany(Attendance::class,'student_id');
     }
+    
 }

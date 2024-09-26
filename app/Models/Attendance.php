@@ -9,6 +9,7 @@ class Attendance extends Model
 {
     use HasFactory;
     protected $guarded=[];
+    public $timestamps = false;
 
     public function course(){
         return $this->belongsTo(Course::class,'course_id');
@@ -21,4 +22,5 @@ class Attendance extends Model
     public function stat(){
         return $this->belongsTo(Stat::class,'stat_id');
     }
+    
 }

@@ -1,26 +1,28 @@
-## 1. Орчин бэлтгэх (Laravel)
+# 1. 🔥 Орчин бэлтгэх (Laravel) 🔥
 
 Дараах орчин бэлтгэх
 Laragon -ийг суулгахад (php, nginx, mysql,….)
 
-* php
+-   php
 
 ```
 php --version
 ```
 
-* composer
+-   composer
 
 ```
 composer --version
 ```
 
-* git 
+-   git
 
 ```
 git --version
 ```
-2.	Фолдер бэлдэх
+
+# 2. 📁 Фолдер бэлдэх 📁
+
 Фолдер дотроо бэлдэх жишээ нь myapps нэртэй фолдер үүсгэсэх
 
 Тухайн фолдер дотроо project үүсгэх
@@ -29,9 +31,9 @@ git --version
 composer create-project laravel/laravel irst
 ```
 
-3.	Өгөгдлийн баазтай холбох
+# 3. 📊 Өгөгдлийн баазтай холбох 📊
 
-.env файл дээр тохиргоо хийж өгөх ёстой. 
+.env файл дээр тохиргоо хийж өгөх ёстой.
 
 Жишээ нь:
 
@@ -44,14 +46,14 @@ DB_USERNAME=root
 DB_PASSWORD=
 ```
 
-4.	Нэвтрэх, хамгаалалтын нэмэл санг суулгах
+# 4. 🛡️ Нэвтрэх, хамгаалалтын нэмэл санг суулгах 🛡️
 
 ```
 composer require laravel/breeze --dev
 php artisan breeze:install
 ```
 
-5.	Модел болон migration-ийг үүсгэх
+# 5. 🌱 Модел болон migration-ийг үүсгэх 🌱
 
 ```
 php artisan make:model Stat -m
@@ -63,15 +65,16 @@ php artisan make:model Attendance -m
 
 migration файл дотор дараах кодыг нэмнэ.
 
+## Stat migration 🌱
 
-### Stat migration
 ```
     $table->id();
     $table->string('name');
     $table->string('abr');
 ```
 
-### Teacher migration
+## Teacher migration 🌱
+
 ```
     $table->id();
     $table->string('firstName');
@@ -81,7 +84,8 @@ migration файл дотор дараах кодыг нэмнэ.
     $table->string('lesson');
 ```
 
-### Course migration
+## Course migration 🌱
+
 ```
     $table->id();
     $table->unsignedBigInteger('teacher_id')->index();
@@ -89,13 +93,13 @@ migration файл дотор дараах кодыг нэмнэ.
     $table->string('group');
     $table->string('YearLesson');
     $table->boolean('isActive');
-    
+
 
     $table->foreign('teacher_id')->references('id')->on('teachers')->cascadeOnDelete();
 ```
 
+## Student migration 🌱
 
-### Student migration
 ```
     $table->id();
     $table->unsignedBigInteger('course_id')->index();
@@ -110,8 +114,8 @@ migration файл дотор дараах кодыг нэмнэ.
     $table->foreign('course_id')->references('id')->on('courses')->cascadeOnDelete();
 ```
 
+## Attendance migration 🌱
 
-### Attendance migration
 ```
     $table->id();
     $table->unsignedBigInteger('course_id')->index();
@@ -126,8 +130,7 @@ migration файл дотор дараах кодыг нэмнэ.
     $table->foreign('stat_id')->references('id')->on('stats')->cascadeOnDelete();
 ```
 
-
-## 6. Бааз руу хүснэгт үүсгэх
+# 6. ⚡️ Бааз руу хүснэгт үүсгэх ⚡️
 
 Migration дээр бичигдсэн командын тусламжтайгаар өгөгдлийн бааз руу хүснэгтүүдийг үүсгэнэ.
 
@@ -160,6 +163,7 @@ Migration-ийг буцаах үүрэгтэй
 ```
 php artisan migrate:rollback
 ```
+
 Сүүлийн k ш migration-ийг буцаах
 
 ```
@@ -172,9 +176,10 @@ php artisan migrate:rollback --step=5
 php artisan migrate:rollback --pretend
 php artisan migrate:reset
 ```
-# Seeder үүсгэх 
 
-### Seeder -ийг дараах командын тусламжтайгаар үүсгэх болно.
+# 🎯 Seeder үүсгэх 🎯
+
+## Seeder -ийг дараах командын тусламжтайгаар үүсгэх болно. 🎯
 
 Seeder файлуудыг дараах командын тусламжтайгаар үүсгэнэ.
 
@@ -214,7 +219,6 @@ class StatSeeder extends Seeder
 
 ```
 
-
 Уг StatSeeder-ийн тусламжтайгаар өгөгдлийн баазад өгөгдлүүдийг оруулахдаа дараах комындыг өгнө.
 
 ```
@@ -222,7 +226,6 @@ php artisan db:seed --class=StatSeeder
 ```
 
 Үүнтэй ижилээр бусад Seeder үүдийг үүсгэж болно.
-
 
 ```
 php artisan db:seed --class=TeacherSeeder
@@ -232,13 +235,13 @@ php artisan db:seed --class=TeacherSeeder
 Ерөнхий seeder-ийг ажиллуулахдаа
 php artisan db:seed
 
-# Model-ийн тохиргоо хийх
+# 🛠️ Model-ийн тохиргоо хийх 🛠️
 
 Модел дээр relationship холболт болон нэмэл функцүүдийг бичиж өгснөөр Controller нь түүнийг ашиглан хэрэгцээт өгөгдлөө дуудах боломжтой болно.
 
 Жишээ болнон бид өөрсдийн Model дээр бичигдэх кодыг оруулъя.
 
-## Stat model
+## Stat model 🔧
 
 ```
 <?php
@@ -252,7 +255,7 @@ class Stat extends Model
 {
     use HasFactory;
     protected $guarded=[];
- 
+
     public function attendances(){
         return $this->hasMany(Attendance::class,'stat_id');
     }
@@ -261,8 +264,7 @@ class Stat extends Model
 
 ```
 
-
-## Teacher model
+## Teacher model 🔧
 
 ```
 <?php
@@ -285,7 +287,7 @@ class Teacher extends Model
 
 ```
 
-## Course model
+## Course model 🔧
 
 ```
 <?php
@@ -299,15 +301,15 @@ class Course extends Model
 {
     use HasFactory;
     protected $guarded=[];
- 
+
     public function teacher(){
         return $this->belongsTo(Teacher::class,'teacher_id');
     }
- 
+
     public function students(){
         return $this->hasMany(Student::class,'course_id');
     }
- 
+
     public function attendances(){
         return $this->hasMany(Attendance::class,'course_id');
     }
@@ -315,7 +317,7 @@ class Course extends Model
 
 ```
 
-## Student model
+## Student model 🔧
 
 ```
 <?php
@@ -333,7 +335,7 @@ class Student extends Model
     public function course(){
         return $this->belongsTo(Course::class,'course_id');
     }
- 
+
     public function attendances(){
         return $this->hasMany(Attendance::class,'student_id');
     }
@@ -341,7 +343,7 @@ class Student extends Model
 
 ```
 
-## Attendance model
+## Attendance model 🔧
 
 ```
 <?php
@@ -355,7 +357,7 @@ class Attendance extends Model
 {
     use HasFactory;
     protected $guarded=[];
-
+    public $timestamps = false;
     public function course(){
         return $this->belongsTo(Course::class,'course_id');
     }
@@ -367,14 +369,13 @@ class Attendance extends Model
     public function stat(){
         return $this->belongsTo(Stat::class,'stat_id');
     }
- 
-    
+
+
 }
 
 ```
 
-
-# Controller үүсгэх
+# 🕹️ Controller үүсгэх 🕹️
 
 Controller-ийг дараах командын тусламжтайгаар үүсгэнэ.
 
@@ -387,12 +388,42 @@ php artisan make:controller CourseController --resource
 php artisan make:controller AttendanceController --resource
 ```
 
-29.	 
-30.	
-php artisan make:controller PhotoController --model=Photo --resource --requests
-31.	 
-32.	 
-33.	php artisan make:resource GradeResource
-34.	 
-35.	php artisan make:resource GradeCollection
-36.	
+# Route-ийг удирдах 🕹️
+
+routes/api.php файлд route-үүдийг бичиж өгнө.
+
+### 1. Шууд route хэсгээс хариулт өгөх хэлбэр
+
+```
+Route::get('/greeting', function () {
+    return 'Hello World';
+});
+```
+
+### 2. Controller-ийн функцийг дуудах үед
+    - Controller-ийг routes/api.php дотор дуудаж оруулж ирнэ.
+    - Үндсэн код бичигдэнэ.
+
+```
+    Route::get('/courses', [TeacherController::class, 'index']);
+    Route::get('/courses/{id}', [TeacherController::class, 'show']);
+    Route::post('/courses', [TeacherController::class, 'create']);
+    Route::post('/courses/{id}', [TeacherController::class, 'update']);
+    Route::delete('/courses/{id}', [TeacherController::class, 'destroy']);
+```
+
+Route-ийн дуудалтыг харах командыг өгч болно.
+
+```
+php artisan route:list
+```
+
+# 📝 Resource файлыг үүсгэх 📝
+
+Resource файл нь хэрэглэгч рүү илгээх мэдээллийг форматлах үүрэгтэй байдаг.
+
+```
+php artisan make:resource CourseResource
+```
+
+php artisan make:controller PhotoController --model=Photo --resource --requests 31. 32. 33. php artisan make:resource GradeResource 34. 35. php artisan make:resource GradeCollection 36.
