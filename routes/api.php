@@ -34,9 +34,9 @@ use App\Http\Controllers\AttendanceController;
 //     return 'Hello World';
 // });
 
-// Route::get('/teachers', [TeacherController::class, 'index']);
-// Route::get('/teacher/{id}', [TeacherController::class, 'show']);
-// Route::post('/teachers', [TeacherController::class, 'create']);
+Route::get('/teachers', [TeacherController::class, 'index']);
+Route::get('/teacher/{id}', [TeacherController::class, 'show']);
+Route::post('/teachers', [TeacherController::class, 'create']);
 
 // Route::group(
 //     [
