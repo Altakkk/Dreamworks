@@ -13,14 +13,14 @@ class StatController extends Controller
      */
     public function index()
     {
-        $x=Stat::with(['attendances'])->get();
+        // $x=Stat::with(['attendances'])->get();
 
-        //dd($x);
-        if($x.count() > 0){
-            return StatResource::collection($x);
-        }else{
-            return response()->json(['message'=>'No record availabel'],200);
-        }
+        // //dd($x);
+        // if($x.count() > 0){
+        //     return StatResource::collection($x);
+        // }else{
+        //     return response()->json(['message'=>'No record availabel'],200);
+        // }
         
         //return 'srgdfgd';
     }

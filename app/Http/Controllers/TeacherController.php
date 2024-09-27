@@ -19,19 +19,19 @@ class TeacherController extends Controller
      */
     public function create(Request $request)
     {
-        $validator=$request->validate([
-            'firstName'=>'required|max:255',
-            'lastName'=>'required|max:255',
-            'gender'=>'required',
-            'phoneNumber'=>'required',
-            'lesson'=>'required',
-        ]);
+        // $validator=$request->validate([
+        //     'firstName'=>'required|max:255',
+        //     'lastName'=>'required|max:255',
+        //     'gender'=>'required',
+        //     'phoneNumber'=>'required',
+        //     'lesson'=>'required',
+        // ]);
 
-        if($validator->fails()) return "Error";
+        // if($validator->fails()) return "Error";
         
-        $t= Teacher::create($validator);
+        // $t= Teacher::create($validator);
 
-        return $t;
+        // return $t;
     }
 
     /**
