@@ -10,8 +10,8 @@ class TeacherController extends Controller
 
     public function index()
     {
-        $datas=Teacher::all();
-        return $datas;
+        $teachers = Teacher::all();
+        return view('teachers.index',['teachers'=>$teachers]);
     }
 
     /**
@@ -19,19 +19,7 @@ class TeacherController extends Controller
      */
     public function create(Request $request)
     {
-        // $validator=$request->validate([
-        //     'firstName'=>'required|max:255',
-        //     'lastName'=>'required|max:255',
-        //     'gender'=>'required',
-        //     'phoneNumber'=>'required',
-        //     'lesson'=>'required',
-        // ]);
-
-        // if($validator->fails()) return "Error";
-        
-        // $t= Teacher::create($validator);
-
-        // return $t;
+        return view('teachers.create');
     }
 
     /**
@@ -39,7 +27,15 @@ class TeacherController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data=$request->validate([
+            'firstName'=>'required',
+            'lastName'=>'required',
+            'gender'=>'required|max:2',
+            'phoneNumber'=>'required',
+            'lesson'=>'required|max:255',
+        ]);
+        $newTeacher = Teacher::create($data);
+        return redirect(route('teachers.index'));
     }
 
     /**
@@ -48,24 +44,32 @@ class TeacherController extends Controller
     public function show(string $id)
     {
         //return 'id='.$id;
-        $t=Teacher::findOrFail($id);
+        $t=Teacher::find($id);
         return $t;
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Teacher $teacher)
     {
-        //
+        return view('teachers.edit',['teacher'=>$teacher]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Teacher $teacher)
     {
-        //
+        $data=$request->validate([
+            'firstName'=>'required',
+            'lastName'=>'required',
+            'gender'=>'required|max:2',
+            'phoneNumber'=>'required',
+            'lesson'=>'required|max:255',
+        ]);
+        $teacher->update($data);
+        return redirect(route('teachers.index'))->with('success','Амжилттай шинэчлэгдлээ.');
     }
 
     /**

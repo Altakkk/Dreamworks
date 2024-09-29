@@ -34,9 +34,9 @@ use App\Http\Controllers\AttendanceController;
 //     return 'Hello World';
 // });
 
-Route::get('/teachers', [TeacherController::class, 'index']);
-Route::get('/teacher/{id}', [TeacherController::class, 'show']);
-Route::post('/teachers', [TeacherController::class, 'create']);
+// Route::get('/teachers', [TeacherController::class, 'index']);
+// Route::get('/teachers/{id}', [TeacherController::class, 'show']);
+// Route::post('/teachers', [TeacherController::class, 'create']);
 
 // Route::group(
 //     [
@@ -58,17 +58,17 @@ Route::post('/teachers', [TeacherController::class, 'create']);
     // Route::delete('/courses/{id}', [CourseController::class, 'destroy']);
 
 
-    Route::group(
-            [
-                'prefix'=>'v1',
-                //'middleware'=>'auth:sanctum'
-            ],
-            function(){
-                    Route::get('/courses', [CourseController::class, 'index']);
-                    Route::get('/courses/{id}', [CourseController::class, 'show']);
-                    Route::post('/courses', [CourseController::class, 'create']);
-                    Route::post('/courses/{id}', [CourseController::class, 'update']);
-                    Route::delete('/courses/{id}', [CourseController::class, 'destroy']);
-            }
+    // Route::group(
+    //         [
+    //             'prefix'=>'v1',
+    //             //'middleware'=>'auth:sanctum'
+    //         ],
+    //         function(){
+    //                 Route::get('/courses', [CourseController::class, 'index']);
+    //                 Route::get('/courses/{id}', [CourseController::class, 'show']);
+    //                 Route::post('/courses', [CourseController::class, 'create']);
+    //                 Route::post('/courses/{id}', [CourseController::class, 'update']);
+    //                 Route::delete('/courses/{id}', [CourseController::class, 'destroy']);
+    //         }
             
-        );
+    //     );
